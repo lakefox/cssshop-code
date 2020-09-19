@@ -463,7 +463,8 @@ document.querySelector("#editorClose").addEventListener("click", () => {
   document.querySelector("#editorOpen").style.display = "block";
   document.querySelector("#editor").style.display = "none";
   document.querySelector("#runCode").style.display = "none";
-  document.querySelector("#editorCont").style.bottom = "0";
+  document.querySelector("#fullScreen").style.display = "none";
+  document.querySelector("#editorCont").style.height = "30px";
 });
 
 document.querySelector("#editorOpen").addEventListener("click", () => {
@@ -471,5 +472,22 @@ document.querySelector("#editorOpen").addEventListener("click", () => {
   document.querySelector("#editorOpen").style.display = "none";
   document.querySelector("#editor").style.display = "block";
   document.querySelector("#runCode").style.display = "block";
-  document.querySelector("#editorCont").style.bottom = "30%";
+  document.querySelector("#fullScreen").style.display = "block";
+  document.querySelector("#editorCont").style.height = "30%";
 });
+
+document.querySelector("#fullScreen").addEventListener("click", () => {
+  document.querySelector("#editorCont").style.height = "100%";
+  document.querySelector("#editorCont").style.zIndex = "11";
+  document.querySelector("#fullScreen").style.display = "none";
+  document.querySelector("#smallScreen").style.display = "block";
+  editor.resize();
+})
+
+document.querySelector("#smallScreen").addEventListener("click", () => {
+  document.querySelector("#editorCont").style.height = "30%";
+  document.querySelector("#editorCont").style.zIndex = "8";
+  document.querySelector("#smallScreen").style.display = "none";
+  document.querySelector("#fullScreen").style.display = "block";
+  editor.resize();
+})
