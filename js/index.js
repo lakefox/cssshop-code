@@ -442,7 +442,7 @@ function exportHTML() {
     <html lang="en" dir="ltr">
       <head>
         <meta charset="utf-8">
-        <title>CSS Shop Draw</title>
+        <title>CSS Shop Code</title>
         <link href="https://fonts.googleapis.com/css?family=${fonts.join("|")}&display=swap" rel="stylesheet">
       </head>
       <body>
