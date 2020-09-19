@@ -1,0 +1,200 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+body {
+  overflow: scroll;
+}
+#canvas {
+  background: url("../assets/transp_bg.png");
+  min-width: 10000px;
+  min-height: 10000px;
+  transform-origin: left top;
+  position: absolute;
+  z-index: -1000000000000;
+}
+#menu {
+  position: fixed;
+  right: 0;
+  width: 400px;
+  height: 100vh;
+  background: #181a1c;
+  display: none;
+  z-index: 999999999999999;
+}
+#head {
+  font-family: 'Mukta', sans-serif;
+  color: #eee;
+  font-size: 30px;
+  text-align: center;
+  padding-top: 10px;
+}
+#close {
+  color: #db3a34;
+  font-size: 40px;
+  float: right;
+  margin-right: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+#open {
+  position: fixed;
+  color: #177e89;
+  font-size: 40px;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+#options {
+  overflow-y: scroll;
+  height: 80vh;
+}
+.option {
+  display: flex;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.icon_img {
+  font-size: 40px;
+  color: #084c61;
+  margin-left: 30px;
+  margin-top: -9px;
+}
+.inputs {
+  display: flex;
+  margin-left: 15px;
+}
+.input {
+  display: flex;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+input[type=number] {
+  width: 50px;
+  height: 20px;
+  border: 2px solid #177e89;
+  border-radius: 4px;
+  margin-left: 10px;
+  padding-left: 10px;
+}
+.input_label {
+  line-height: 28px;
+  font-size: 18px;
+  color: #eee;
+  font-family: 'Mukta', sans-serif;
+}
+input[type="color"] {
+  margin-left: 17px;
+}
+.option_head {
+  margin-left: 15px;
+  font-family: 'Mukta', sans-serif;
+  color: #eee;
+  font-size: 20px;
+}
+.fnt_clr {
+  margin-left: 22px;
+}
+#font_size {
+  margin-left: 26px;
+}
+input[type="text"] {
+  width: 125px;
+  height: 20px;
+  margin-left: 8px;
+  border: 2px solid #177e89;
+  border-radius: 4px;
+  padding-left: 8px;
+}
+.bx-rotate-10 {
+  transform: rotate(10deg);
+}
+.txt_effects {
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+}
+.txt_effects:hover {
+  background: #0d0d0e;
+}
+.active {
+  background: #0d0d0e;
+}
+select {
+  margin-left: 10px;
+  border: 2px solid #177e89;
+  border-radius: 4px;
+  background: #fff;
+  color: #212121;
+}
+#element_selector {
+  margin-left: 30px;
+}
+input[type="button"] {
+  width: 192px;
+  font-size: 20px;
+  color: #fff;
+  background: #277e88;
+  border: none;
+  border-radius: 4px;
+}
+.zoom {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  font-size: 30px;
+  color: #287e87;
+  z-index: 10;
+  display: flex;
+}
+.zoom > i {
+  cursor: pointer;
+}
+#amount {
+  font-family: 'Mukta', sans-serif;
+  font-size: 20px;
+  margin-left: 10px;
+}
+.artboards {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  font-size: 30px;
+  color: #287e87;
+  z-index: 10;
+  display: flex;
+}
+.artboards > i {
+  cursor: pointer;
+}
+input[type="file"] {
+  margin-left: 10px;
+  margin-top: 4px;
+  width: 180px;
+}
+#editor {
+  height: 30%;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+}
+#editorCont {
+  width: 100%;
+  height: 30px;
+  background: #181a1c;
+  position: fixed;
+  bottom: 30%;
+  text-align: center;
+}
+#runCode {
+  cursor: pointer;
+  color: #db3a34;
+  font-size: 30px;
+  position: absolute;
+  z-index: 10;
+  right: 5px;
+  bottom: 3%;
+}

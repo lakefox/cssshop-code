@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CSS Shop/Code</title>
+    <link rel="stylesheet" href="./css/master.css">
+    <link href="https://fonts.googleapis.com/css?family=Mukta" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" type="image/png" sizes="32x32" href="https://lakefox.net/assets/logo.png">
+  </head>
+  <body>
+    <div class="artboards">
+      <i class='bx bxs-trash' title="Delete Everything" onclick="deleteET()"></i>
+      <select id="artboard_select" onchange="changeArtBoard(this)">
+      </select>
+      &nbsp;
+      <i class='bx bx-layer' title="Remove Artboard" onclick="removeArtBoard()"></i>
+      <i class='bx bxs-layer' title="Add Artboard" onclick="addArtBoard()"></i>
+      <input type='file' onchange='openFile(event)'>
+    </div>
+    <div class="zoom">
+      <i class='bx bx-zoom-out' onclick="zoomOut()"></i>
+      <i class='bx bx-zoom-in' onclick="zoomIn()"></i>
+      <div id="amount">
+        1
+      </div>
+    </div>
+
+    <i id="open" class='bx bxs-plus-square' ></i>
+    <div id="menu">
+      <i id="close" class='bx bxs-x-square'></i>
+      <div id="head">
+        CSS Shop/Draw
+      </div>
+      <div id="options">
+        <div class="option_head">
+          Create New Element
+        </div>
+
+        <div class="option">
+          <i class='bx bxs-plus-square icon_img'></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Name
+              </div>
+              <input type="text" placeholder="Id" id="element_id">
+            </div>
+          </div>
+        </div>
+
+        <div class="option">
+          <i class='bx bxs-plus-square icon_img' style="color: #18191b;"></i>
+          <div class="inputs">
+            <div class="input">
+              <input type="button" value="Create" onclick="createEl()">
+            </div>
+          </div>
+        </div>
+
+        <div class="option_head">
+          Element
+        </div>
+
+        <div class="option">
+          <i class='bx bx-id-card icon_img'></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Selected Element
+              </div>
+              <select id="element_selector" onchange="changeElement()"></select>
+            </div>
+          </div>
+        </div>
+
+        <div class="option">
+          <i class='bx bx-id-card icon_img' style="color: #18191b;"></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Rename
+              </div>
+              <input type="text" placeholder="Id" id="rename_element" onchange="renameEl()">
+            </div>
+          </div>
+        </div>
+
+        <div class="option">
+          <i class='bx bxs-trash icon_img'></i>
+          <div class="inputs">
+            <div class="input">
+              <input type="button" value="Delete" onclick="deleteEl()">
+            </div>
+          </div>
+        </div>
+
+        <div class="option">
+          <i class='bx bx-id-card icon_img'></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Copy
+              </div>
+              <select id="copy_selector"></select>
+            </div>
+          </div>
+        </div>
+
+        <div class="option">
+          <i class='bx bxs-trash icon_img' style="color: #18191b;"></i>
+          <div class="inputs">
+            <div class="input">
+              <input type="button" value="Paste" onclick="paste()">
+            </div>
+          </div>
+        </div>
+
+        <div class="option_head">
+          Properties
+        </div>
+
+        <div class="option">
+          <i class='bx bx-rectangle icon_img'></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Width
+              </div>
+              <input type="number" value="100" id="width" onchange="update(this)">
+            </div>
+            <div class="input">
+              <div class="input_label">
+                Height
+              </div>
+              <input type="number" value="100" id="height" onchange="update(this)">
+            </div>
+          </div>
+        </div>
+
+        <div class="option">
+          <i class='bx bxs-color-fill icon_img'></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Background Color
+              </div>
+              <input type="color" id="background_color" onchange="update(this)">
+            </div>
+          </div>
+        </div>
+
+        <div class="option">
+          <i class='bx bx-search-alt icon_img'></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Opacity
+              </div>
+              <input type="number" value="1" min="0" max="1" step="0.01" id="opacity" onchange="update(this)">
+            </div>
+          </div>
+        </div>
+
+        <div class="option_head">
+          Content
+        </div>
+
+        <div class="option">
+          <i class='bx bxs-edit icon_img'></i>
+          <div class="inputs">
+            <div class="input" style="display: block;">
+              <div class="input_label">
+                HTML/Text
+              </div>
+              <textarea rows="8" cols="30" id="innerHTML" onchange="updateHTML(this)"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <div class="option_head">
+          Font
+        </div>
+
+        <div class="option">
+          <i class='bx bx-font-size icon_img'></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Font Size
+              </div>
+              <input type="number" value="20" id="font_size" onchange="update(this)">
+            </div>
+          </div>
+        </div>
+
+        <div class="option">
+          <i class='bx bx-font-color bx-lg icon_img fnt_clr'></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Font Color
+              </div>
+              <input type="color" id="color" value="#eeeeee" onchange="update(this)">
+            </div>
+          </div>
+        </div>
+
+        <div class="option">
+          <i class='bx bxs-sort-alt icon_img'></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Line Height
+              </div>
+              <input type="number" value="20" step="1" id="line_height" onchange="update(this)">
+            </div>
+          </div>
+        </div>
+
+        <div class="option">
+          <i class='bx bx-font-family icon_img'></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Font Family
+              </div>
+              <input type="text" placeholder="Enter Google Font" id="font_family" onchange="update(this)">
+            </div>
+          </div>
+        </div>
+
+        <div class="option">
+          <i class='bx bx-font icon_img'></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Font Weight
+              </div>
+              <input type="number" value="400" step="100" min="100" max="900" id="font_weight" onchange="update(this)">
+            </div>
+          </div>
+        </div>
+
+        <div class="option_head">
+          Font Effects
+        </div>
+
+        <div class="option">
+          <i class='bx bxs-color-fill icon_img'></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Effects Color
+              </div>
+              <input type="color" id="text_decoration_color" onchange="update(this)">
+            </div>
+          </div>
+        </div>
+
+        <div class="option">
+          <i class='bx bx-strikethrough icon_img txt_effects' onclick="button(this)" title="Line-Through"></i>
+          <i class='bx bx-underline icon_img txt_effects' onclick="button(this)" title="Underline"></i>
+          <i class='bx bx-bold icon_img txt_effects' onclick="button(this)" title="Bold"></i>
+          <i class='bx bx-text bx-rotate-10 icon_img txt_effects' onclick="button(this)" title="Italic"></i>
+        </div>
+
+        <div class="option_head">
+          Align
+        </div>
+
+        <div class="option">
+          <i class='bx bx-align-justify icon_img txt_effects' onclick="button(this)" title="Justify"></i>
+          <i class='bx bx-align-left icon_img txt_effects' onclick="button(this)" title="Left"></i>
+          <i class='bx bx-align-middle icon_img txt_effects' onclick="button(this)" title="Center"></i>
+          <i class='bx bx-align-right icon_img txt_effects' onclick="button(this)" title="Right"></i>
+        </div>
+
+        <div class="option_head">
+          Border
+        </div>
+
+        <div class="option">
+          <i class='bx bx-circle icon_img'></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Radius
+              </div>
+              <input type="number" value="0" id="border_radius" onchange="update(this)">
+            </div>
+          </div>
+        </div>
+
+        <div class="option">
+          <i class='bx bx-last-page icon_img'></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Width
+              </div>
+              <input type="number" value="0" id="border_width" onchange="update(this)">
+            </div>
+          </div>
+        </div>
+
+        <div class="option">
+          <i class='bx bxs-cube icon_img'></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Style
+              </div>
+              <select id="border_style" onchange="update(this)">
+                <option value="solid">Solid</option>
+                <option value="dashed">Dashed</option>
+                <option value="dotted">Dotted</option>
+                <option value="double">Double</option>
+                <option value="groove">Groove</option>
+                <option value="inset">Inset</option>
+                <option value="outset">Outset</option>
+                <option value="hidden">Hidden</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="option">
+          <i class='bx bxs-color-fill icon_img'></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Color
+              </div>
+              <input type="color" id="border_color" onchange="update(this)">
+            </div>
+          </div>
+        </div>
+
+        <div class="option_head">
+          Media
+        </div>
+
+        <div class="option">
+          <i class='bx bx-image icon_img'></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Background Image
+              </div>
+              <input type="file" id="background_image" onchange="readImg()">
+            </div>
+          </div>
+        </div>
+
+        <div class="option">
+          <i class='bx bx-repeat icon_img txt_effects' onclick="button(this)" title="Repeat"></i>
+          <i class='bx bx-area icon_img txt_effects' onclick="button(this)" title="Cover"></i>
+          <i class='bx bx-radio-circle-marked icon_img txt_effects' onclick="button(this)" title="Center​"></i>
+          <i class='bx bxs-x-square icon_img txt_effects' onclick="removeIMG()" title="Remove"></i>
+        </div>
+
+        <div class="option_head">
+          Position
+        </div>
+
+        <div class="option">
+          <i class='bx bx-expand icon_img'></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                X
+              </div>
+              <input type="number" value="100" id="left" onchange="update(this)">
+            </div>
+            <div class="input">
+              <div class="input_label">
+                Y
+              </div>
+              <input type="number" value="100" id="top" onchange="update(this)">
+            </div>
+          </div>
+        </div>
+
+        <div class="option">
+          <i class='bx bx-move-vertical icon_img'></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Z
+              </div>
+              <input type="number" value="0" id="z_index" onchange="update(this)">
+            </div>
+          </div>
+        </div>
+
+        <div class="option_head">
+          Padding
+        </div>
+
+        <div class="option">
+          <i class='bx bx-exit-fullscreen icon_img'></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Top
+              </div>
+              <input type="number" value="0" id="padding_top" onchange="update(this)">
+            </div>
+            <div class="input">
+              <div class="input_label">
+                Bottom
+              </div>
+              <input type="number" value="0" id="padding_bottom" onchange="update(this)">
+            </div>
+          </div>
+        </div>
+
+        <div class="option">
+          <i class='bx bx-expand icon_img' style="color: #18191b;"></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Left
+              </div>
+              <input type="number" value="0" id="padding_left" onchange="update(this)">
+            </div>
+            <div class="input">
+              <div class="input_label">
+                Right
+              </div>
+              <input type="number" value="0" id="padding_right" onchange="update(this)">
+            </div>
+          </div>
+        </div>
+
+        <div class="option_head">
+          Transform
+        </div>
+
+        <div class="option">
+          <i class='bx bx-slider icon_img'></i>
+          <div class="inputs">
+            <div class="input">
+              <div class="input_label">
+                Enter Transforms
+              </div>
+              <input type="text" id="transform" onchange="update(this)">
+            </div>
+          </div>
+        </div>
+
+        <div class="option_head">
+          Download
+        </div>
+
+        <div class="option">
+          <i class='bx bx-download icon_img txt_effects' id="download" title="Download Image"></i>
+          <i class='bx bx-download icon_img txt_effects' id="download_html" title="Download HTML" onclick="exportHTML()"></i>
+          <i class='bx bx-download icon_img txt_effects' id="download_file" title="Download File" onclick="download_file()"></i>
+        </div>
+
+      </div>
+    </div>
+    <div id="canvas">
+
+    </div>
+
+    <div id="editorCont">
+      <i id="editorClose" class='bx bx-chevron-down' style="color: #fff; font-size: 30px; cursor: pointer;"></i>
+      <i id="editorOpen" class='bx bx-chevron-up' style="color: #fff; font-size: 30px; cursor: pointer; display: none;"></i>
+      <i id="runCode" onclick="runCodeEditor()" class='bx bx-refresh'></i>
+
+      <div id="editor"></div>
+    </div>
+
+    <script src="https://raw.githack.com/ajaxorg/ace-builds/master/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/randomcolor/0.5.2/randomColor.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+    <script src="./js/index.js" charset="utf-8"></script>
+  </body>
+</html>
